@@ -237,6 +237,124 @@ button.screen-row.active{background:rgba(30,68,56,.07);box-shadow:inset 2px 0 0 
 }
 
 
+/* V5.3 — desktop proportion refinement */
+@media(min-width:1180px){
+  :root{--desktop-frame:1480px;--desktop-gutter:max(40px,calc((100vw - var(--desktop-frame))/2))}
+
+  /* Large monitor = larger margins, not an endlessly wider canvas. */
+  .site-header{padding-left:var(--desktop-gutter);padding-right:var(--desktop-gutter)}
+  .hero,.manifesto,.statement-section,.products,.value-section,.writing,.advisory,.footer{
+    padding-left:var(--desktop-gutter);
+    padding-right:var(--desktop-gutter);
+  }
+  .footer-bottom{left:var(--desktop-gutter);right:var(--desktop-gutter)}
+  .model{padding-left:var(--desktop-gutter);padding-right:var(--desktop-gutter);grid-template-columns:.78fr 1.22fr}
+
+  /* Supporting typography should hold its own against the larger desktop canvas. */
+  .eyebrow{font-size:10px}
+  .section-index{font-size:28px}
+  .nav,.header-link{font-size:12px}
+  .button{font-size:12px;min-height:49px;padding-left:20px;padding-right:20px}
+  .text-link{font-size:12px}
+  .hero-meta{font-size:9px}
+  .hero-bottom>p{font-size:18px;line-height:1.6;max-width:680px}
+  .manifesto-note,.section-intro>p,.advisory-copy>p,.value-note{font-size:16px}
+  .feature-copy>p:not(.product-index),.model-intro>p:last-child{font-size:15px}
+  .product-editorial-grid article>p:not(.product-index){font-size:14px}
+
+  /* Keep the primary visuals closer to the editorial proportions of the mockup. */
+  .signal-field{height:clamp(620px,43vw,740px)}
+  .signal-label span,.axis-label{font-size:9px}
+  .signal-label strong{font-size:20px}
+  .signal-node span{font-size:8px}
+  .signal-node b{font-size:10px}
+  .deal-truth-card{width:min(420px,34%);padding:18px 19px 14px}
+  .card-top{font-size:9px}
+  .card-number strong{font-size:34px}
+  .card-number span{font-size:10px}
+  .card-line{font-size:10px;padding:10px 0}
+
+  /* Revenue statement: fewer micro labels, more readable executive hierarchy. */
+  .statement-head{padding:25px 28px}
+  .statement-head h3{font-size:28px}
+  .statement-meta{font-size:10px}
+  .statement-primary{min-height:245px}
+  .primary-number{padding:34px 28px}
+  .primary-number span,.statement-grid span{font-size:10px}
+  .primary-number strong{font-size:clamp(62px,4.5vw,78px)}
+  .composition{padding:38px}
+  .composition-key{font-size:10px}
+  .statement-grid article{padding:28px;min-height:158px}
+  .statement-grid strong{font-size:42px}
+  .statement-grid small{font-size:11px}
+  .statement-readout{padding:31px 28px;gap:36px}
+  .statement-readout>p{font-size:26px}
+  .readout-note span{font-size:9px}
+  .readout-note b{font-size:12px}
+
+  /* Product panels: increase vertical presence and internal UI legibility. */
+  .feature-product{grid-template-columns:.78fr 1.22fr;min-height:760px}
+  .product-index{font-size:9px}
+  .feature-copy h3{font-size:clamp(48px,4vw,68px)}
+  .feature-points span{font-size:11px;padding:13px 0}
+  .feature-screen-wrap{padding-top:68px;padding-bottom:68px}
+  .screen-coordinate{font-size:8px}
+  .screen-browser{height:38px}
+  .screen-browser span{font-size:9px}
+  .screen-main{padding:26px}
+  .screen-heading small{font-size:9px}
+  .screen-heading strong{font-size:28px}
+  .screen-heading>span{font-size:10px}
+  .screen-stats div{padding:20px 16px}
+  .screen-stats small{font-size:9px}
+  .screen-stats b{font-size:26px}
+  .screen-toolbar{height:47px}
+  .screen-tab{font-size:9px}
+  .live-preview{font-size:8px}
+  .screen-workspace{min-height:300px;grid-template-columns:minmax(0,1.48fr) minmax(220px,.78fr)}
+  .screen-row{font-size:10px;padding:13px 9px}
+  .screen-row.head{font-size:9px}
+  .deal-inspector{padding:18px 17px 16px}
+  .inspector-top span,.inspector-top small{font-size:8px}
+  .deal-inspector h4{font-size:23px}
+  .inspector-amount strong{font-size:28px}
+  .inspector-amount span{font-size:8px}
+  .inspector-line span{font-size:8px}
+  .inspector-line b{font-size:9px}
+  .next-proof span{font-size:7px}
+  .next-proof b{font-size:14px}
+
+  .editorial-art{height:390px}
+  .calc-art strong{font-size:78px}
+  .calc-art small,.engine-art small{font-size:10px}
+  .product-editorial-grid h3{font-size:40px}
+
+  /* Full-bleed dark sections keep their atmosphere, with content held to the same frame. */
+  .model,.model-visual{min-height:900px}
+  .model-label,.map-node{font-size:9px}
+  .model-reading span{font-size:8px}
+  .model-reading strong{font-size:31px}
+  .model-reading small{font-size:10px}
+  .model-intro>p:last-child{line-height:1.65}
+  .model-list h3{font-size:29px}
+  .model-list p{font-size:13px}
+  .model-list b{font-size:9px}
+
+  .value-flow span{font-size:10px}
+  .value-flow strong{font-size:44px}
+  .value-flow small{font-size:10px}
+
+  .article-art{height:330px}
+  .article-card small{font-size:9px}
+  .article-card h3{font-size:34px}
+  .article-card b{font-size:11px}
+  .advisory-list span{font-size:20px}
+  .footer-brand p{font-size:13px}
+  .footer h4{font-size:9px}
+  .footer-content>div:not(:first-child){font-size:12px}
+  .footer-bottom{font-size:9px}
+}
+
 /* Production safety: content remains visible if JavaScript is unavailable. */
 html.no-js [data-reveal]{opacity:1!important;transform:none!important}
 </style>
