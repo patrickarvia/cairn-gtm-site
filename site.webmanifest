@@ -1,0 +1,9 @@
+{
+  "name": "Cairn GTM",
+  "short_name": "Cairn",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2efe7",
+  "theme_color": "#f2efe7",
+  "icons": []
+}
