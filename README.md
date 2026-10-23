@@ -1,6 +1,8 @@
-# Cairn GTM website
+# Cairn GTM
 
-Production static site for https://cairngtm.com.
+Cairn GTM is an independent enterprise sales and go-to-market advisory practice founded by Patrick Arvia, with evidence-based tools for pipeline quality, forecasting, and deal execution.
+
+Production site: https://cairngtm.com/ · Founder: https://patrickarvia.com/ · Consulting overview: https://patrickarvia.com/consulting/
 
 ## Local preview
 
