@@ -394,6 +394,60 @@ button.screen-row.active{background:rgba(30,68,56,.07);box-shadow:inset 2px 0 0 
   .footer-bottom{font-size:9px}
 }
 
+
+/* V5.4 — founder section */
+.founder{
+  padding:clamp(108px,9vw,150px) clamp(20px,5.3vw,86px);
+  display:grid;
+  grid-template-columns:80px minmax(320px,.78fr) minmax(0,1.22fr);
+  gap:clamp(32px,4vw,64px);
+  align-items:start;
+  background:var(--paper2);
+  border-top:1px solid var(--line);
+}
+.founder-label{display:grid;align-content:start;gap:22px}
+.founder-label>span{font-family:"Iowan Old Style",Georgia,serif;color:#9aa09c;font-size:20px}
+.founder-portrait{margin:0;position:relative;overflow:hidden;background:#dedbd2;aspect-ratio:4/5;border:1px solid rgba(16,21,18,.08)}
+.founder-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:saturate(.94) contrast(.99)}
+.founder-portrait figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;justify-content:space-between;gap:20px;
+  padding:13px 15px;
+  background:rgba(242,239,231,.92);
+  backdrop-filter:blur(10px);
+  border-top:1px solid rgba(16,21,18,.12);
+  font-size:8px;letter-spacing:.11em;text-transform:uppercase;color:#5d6661;
+}
+.founder-copy{max-width:760px;padding-top:clamp(10px,1.5vw,24px)}
+.founder-copy h2{font-size:clamp(54px,5.2vw,82px);line-height:.94;margin:15px 0 8px}
+.founder-role{margin:0 0 34px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);font-weight:700}
+.founder-lede{font-family:"Iowan Old Style",Georgia,serif;font-size:clamp(25px,2.25vw,35px);line-height:1.18;letter-spacing:-.025em;margin:0 0 28px}
+.founder-copy>p:not(.eyebrow):not(.founder-role):not(.founder-lede){font-size:15px;line-height:1.72;color:var(--muted);margin:0 0 18px;max-width:680px}
+.founder-tags{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:34px;padding-top:19px;border-top:1px solid var(--line)}
+.founder-tags span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#66706a}
+
+@media(min-width:1180px){
+  .founder{padding-left:var(--desktop-gutter);padding-right:var(--desktop-gutter)}
+  .founder-copy>p:not(.eyebrow):not(.founder-role):not(.founder-lede){font-size:16px}
+  .founder-role{font-size:12px}
+  .founder-tags span{font-size:10px}
+}
+@media(max-width:1050px){
+  .founder{grid-template-columns:60px minmax(280px,.78fr) minmax(0,1.22fr);gap:32px}
+  .founder-copy h2{font-size:52px}
+}
+@media(max-width:760px){
+  .founder{grid-template-columns:1fr;padding:68px 18px;gap:22px}
+  .founder-label{display:flex;align-items:center;gap:18px}
+  .founder-portrait{width:100%;max-width:520px;aspect-ratio:1/1}
+  .founder-copy{padding-top:12px}
+  .founder-copy h2{font-size:42px;line-height:.98;margin-top:13px}
+  .founder-role{margin-bottom:26px}
+  .founder-lede{font-size:25px;line-height:1.22}
+  .founder-copy>p:not(.eyebrow):not(.founder-role):not(.founder-lede){font-size:14px;line-height:1.62}
+  .founder-portrait figcaption{font-size:7px}
+}
+
 /* Production safety: content remains visible if JavaScript is unavailable. */
 html.no-js [data-reveal]{opacity:1!important;transform:none!important}
 </style>
@@ -646,8 +700,34 @@ html.no-js [data-reveal]{opacity:1!important;transform:none!important}
       </div>
     </section>
 
+
+    <section class="founder" id="founder">
+      <div class="founder-label" data-reveal>
+        <span>05</span>
+        <p class="eyebrow">MEET THE FOUNDER</p>
+      </div>
+      <figure class="founder-portrait" data-reveal>
+        <img src="/patrick-arvia-founder-cairn-gtm.jpg" alt="Patrick Arvia, founder of Cairn GTM" width="480" height="480" loading="lazy" decoding="async">
+        <figcaption><span>Patrick Arvia</span><span>Founder, Cairn GTM</span></figcaption>
+      </figure>
+      <div class="founder-copy" data-reveal>
+        <p class="eyebrow">CAIRN GTM</p>
+        <h2>Patrick Arvia</h2>
+        <p class="founder-role">Founder, Cairn GTM</p>
+        <p class="founder-lede">Enterprise sales and go-to-market experience, turned into a clearer way to see what revenue evidence actually supports.</p>
+        <p>Patrick Arvia is an enterprise sales and go-to-market leader with experience across new business, customer growth, and complex revenue motions.</p>
+        <p>He built Cairn around a simple observation: revenue teams collect enormous amounts of activity and data, but still struggle to distinguish what is known from what is assumed.</p>
+        <p>Cairn is an effort to make that evidence visible — across pipeline, customer relationships, retention, expansion, and the decisions that determine revenue.</p>
+        <div class="founder-tags" aria-label="Areas of experience">
+          <span>Enterprise sales</span>
+          <span>GTM systems</span>
+          <span>Revenue intelligence</span>
+        </div>
+      </div>
+    </section>
+
     <section class="advisory" id="advisory" data-reveal>
-      <div class="advisory-label"><span>05</span><p class="eyebrow">CAIRN ADVISORY</p></div>
+      <div class="advisory-label"><span>06</span><p class="eyebrow">CAIRN ADVISORY</p></div>
       <div class="advisory-copy"><h2>Strategic GTM support<br>for select teams.</h2><p>Hands-on advisory for early-stage and growth-stage technology companies building repeatable, evidence-driven revenue motions.</p><a class="button button-dark" href="mailto:patrick@cairngtm.com">Work with Cairn <span>↗</span></a></div>
       <div class="advisory-list"><span>Sales strategy</span><span>Enterprise outbound</span><span>Playbooks + training</span><span>CRM + revenue systems</span><span>AI adoption</span><span>Positioning + messaging</span></div>
     </section>
@@ -670,7 +750,7 @@ html.no-js [data-reveal]{opacity:1!important;transform:none!important}
         </g>
       </svg>
       <div class="footer-fade"></div>
-      <div class="footer-waypoint"><i></i><span>END / 05</span><b>Signal retained</b></div>
+      <div class="footer-waypoint"><i></i><span>END / 06</span><b>Signal retained</b></div>
     </div>
     <div class="footer-content">
       <div class="footer-brand"><a class="wordmark footer-mark" href="#top">CAIRN <span>GTM</span></a><p>Revenue intelligence built around evidence.</p></div>
