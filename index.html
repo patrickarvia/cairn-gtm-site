@@ -439,13 +439,13 @@ button.screen-row.active{background:rgba(30,68,56,.07);box-shadow:inset 2px 0 0 
 @media(max-width:760px){
   .founder{grid-template-columns:1fr;padding:68px 18px;gap:22px}
   .founder-label{display:flex;align-items:center;gap:18px}
-  .founder-portrait{width:100%;max-width:520px;aspect-ratio:1/1}
+  .founder-portrait{width:78vw;max-width:360px;margin-inline:auto;aspect-ratio:1/1;border-radius:50%}
   .founder-copy{padding-top:12px}
   .founder-copy h2{font-size:42px;line-height:.98;margin-top:13px}
   .founder-role{margin-bottom:26px}
   .founder-lede{font-size:25px;line-height:1.22}
   .founder-copy>p:not(.eyebrow):not(.founder-role):not(.founder-lede){font-size:14px;line-height:1.62}
-  .founder-portrait figcaption{font-size:7px}
+  .founder-portrait figcaption{display:none}
 }
 
 /* Production safety: content remains visible if JavaScript is unavailable. */
@@ -707,7 +707,7 @@ html.no-js [data-reveal]{opacity:1!important;transform:none!important}
         <p class="eyebrow">MEET THE FOUNDER</p>
       </div>
       <figure class="founder-portrait" data-reveal>
-        <img src="/patrick-arvia-founder-cairn-gtm.jpg" alt="Patrick Arvia, founder of Cairn GTM" width="900" height="900" loading="lazy" decoding="async">
+        <img src="/patrick-arvia-founder-cairn-gtm.jpg" alt="Patrick Arvia, founder of Cairn GTM" width="1254" height="1254" loading="lazy" decoding="async">
         <figcaption><span>Patrick Arvia</span><span>Founder, Cairn GTM</span></figcaption>
       </figure>
       <div class="founder-copy" data-reveal>
