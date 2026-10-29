@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cairn Customer Portfolio Analyzer turns customer portfolio exports into renewal risk, expansion signals, concentration exposure, and next actions." />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#f2efe7" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Customer Portfolio Analyzer — Cairn GTM</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="product-header">
+      <div class="eyebrow">CAIRN GTM</div>
+      <div>
+        <h1>Customer Portfolio Analyzer</h1>
+        <p class="sub">Turn a customer portfolio export into renewal risk, expansion signals, revenue concentration, and the next customer action required.</p>
+        <div class="privacy">Your data stays in your browser. Cairn does not upload or store your files.</div>
+      </div>
+    </header>
+
+    <section class="entry panel">
+      <div class="entry-grid">
+        <div class="entry-card">
+          <div class="entry-label">Your portfolio</div>
+          <h2>Analyze a customer export</h2>
+          <p>Upload a CSV or Excel file. Cairn will map the fields before analysis.</p>
+          <label class="drop" id="dropZone" for="fileInput">
+            <strong>Drop a CSV or Excel customer portfolio here</strong>
+            <span>or click to choose a file</span>
+          </label>
+          <input id="fileInput" type="file" accept=".csv,.xlsx,.xls,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" />
+        </div>
+        <div class="entry-card demo">
+          <div class="entry-label">No file required</div>
+          <h2>See what Cairn finds</h2>
+          <p>Try a fictional enterprise customer portfolio built to demonstrate renewal, engagement, expansion, and concentration signals.</p>
+          <button id="loadSample" class="primary full">Try the demo →</button>
+          <div class="demo-note">Fictional accounts · demo data only</div>
+        </div>
+      </div>
+
+      <div id="sheetPicker" class="sheet-picker hidden">
+        <div>
+          <div class="entry-label">Excel workbook</div>
+          <h3>Select the sheet with your customer portfolio</h3>
+          <p id="sheetPickerNote"></p>
+        </div>
+        <div class="sheet-picker-controls">
+          <select id="sheetSelect" aria-label="Excel sheet"></select>
+          <button id="useSheetBtn" class="primary">Use this sheet →</button>
+        </div>
+      </div>
+
+      <div id="sampleReady" class="sample-ready hidden">
+        <div>
+          <h3>Sample portfolio loaded</h3>
+          <p id="sampleStats"></p>
+        </div>
+        <span>Demo data</span>
+      </div>
+
+      <div class="entry-foot">
+        <button id="reset" class="ghost">Reset</button>
+        <p>Minimum useful fields: account name, ARR/revenue, and renewal date. Health, engagement, adoption, relationship, support, and expansion fields make the read stronger.</p>
+      </div>
+    </section>
+
+    <section id="mappingSection" class="panel mapping hidden">
+      <div class="mapping-head">
+        <div>
+          <div class="eyebrow">IMPORT REVIEW</div>
+          <h2>Field mapping</h2>
+          <div id="mappingSource" class="source-context"></div>
+          <p>Cairn matched the fields it recognizes. Review anything marked Check or Not mapped.</p>
+        </div>
+        <div id="mappingSummary" class="mapping-summary"></div>
+      </div>
+      <div id="mappingGrid" class="mapping-grid"></div>
+      <div class="mapping-actions">
+        <div id="mappingActionNote"></div>
+        <button id="analyzeBtn" class="primary">Analyze portfolio →</button>
+      </div>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="results-head">
+        <div>
+          <div class="eyebrow">CUSTOMER INTELLIGENCE</div>
+          <h2>Portfolio evidence review</h2>
+          <div id="resultsSource" class="source-context"></div>
+        </div>
+        <span id="demoResultsLabel" class="demo-label hidden">Sample data</span>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="kpi-label">Portfolio ARR</div>
+          <div id="kArr" class="kpi-value">$0</div>
+          <div id="kAccounts" class="kpi-note"></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Risk-Exposed ARR</div>
+          <div id="kRiskArr" class="kpi-value">$0</div>
+          <div id="kRiskAccounts" class="kpi-note"></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Renewing ≤ 90 Days</div>
+          <div id="kRenewalArr" class="kpi-value">$0</div>
+          <div id="kRenewalAccounts" class="kpi-note"></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Expansion Candidates</div>
+          <div id="kExpansion" class="kpi-value">0</div>
+          <div id="kExpansionArr" class="kpi-note"></div>
+        </div>
+      </div>
+
+      <section class="panel result-panel">
+        <div class="section-title">Portfolio read</div>
+        <div id="portfolioRead" class="callout"></div>
+      </section>
+
+      <div class="two-col">
+        <section class="panel result-panel">
+          <div class="section-head">
+            <div>
+              <div class="section-title">Priority queue</div>
+              <h3>Accounts requiring attention</h3>
+            </div>
+            <span id="priorityCount" class="muted"></span>
+          </div>
+          <div id="priorityQueue" class="queue"></div>
+        </section>
+
+        <section class="panel result-panel">
+          <div class="section-title">Renewal exposure</div>
+          <h3>ARR by renewal window</h3>
+          <div id="renewalWindows" class="renewal-windows"></div>
+          <div class="section-title secondary-title">Concentration</div>
+          <div id="concentration"></div>
+        </section>
+      </div>
+
+      <section class="panel result-panel">
+        <div class="section-head">
+          <div>
+            <div class="section-title">Expansion</div>
+            <h3>Accounts with credible expansion signals</h3>
+          </div>
+          <span id="expansionCount" class="muted"></span>
+        </div>
+        <div id="expansionList" class="expansion-grid"></div>
+      </section>
+
+      <section class="panel result-panel">
+        <div class="account-controls">
+          <div>
+            <div class="section-title">Account review</div>
+            <div id="accountCount" class="muted"></div>
+          </div>
+          <div class="control-row">
+            <select id="filterRisk" aria-label="Risk state">
+              <option value="All">All risk states</option>
+              <option value="Critical">Critical</option>
+              <option value="Watch">Watch</option>
+              <option value="Stable">Stable</option>
+            </select>
+            <select id="filterRenewal" aria-label="Renewal window">
+              <option value="All">All renewal windows</option>
+              <option value="30">Renewing ≤ 30 days</option>
+              <option value="60">Renewing ≤ 60 days</option>
+              <option value="90">Renewing ≤ 90 days</option>
+              <option value="Later">Renewing later</option>
+            </select>
+            <button id="downloadBtn" class="secondary">Download analysis CSV</button>
+          </div>
+        </div>
+        <div id="accountList" class="account-list"></div>
+      </section>
+
+      <p class="footer-note">Cairn Customer Portfolio Analyzer is evidence-based and rule-driven. It highlights observable account signals in the uploaded file; it does not predict customer behavior or replace account judgment.</p>
+    </section>
+
+    <footer>
+      <span>Built by Cairn GTM</span>
+      <span>Portfolio evidence, not a black-box health score.</span>
+    </footer>
+  </main>
+
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
