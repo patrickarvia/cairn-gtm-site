@@ -331,7 +331,7 @@ function expansionSignal(v){
   if(no(v)||/none|low|no signal/.test(s))return -1;
   return null;
 }
-function riskClass(score){return score>=45?"Critical":score>=22?"Watch":"Stable"}
+function riskClass(score){return score>=70?"Critical":score>=22?"Watch":"Stable"}
 
 function analyzeRow(row,totalPortfolioArr){
   const today=calendarDay(new Date());
